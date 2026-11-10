@@ -24,19 +24,6 @@ jobs:
         with:
           gradle-version: '8.7'
 
-      - name: Patch unresolvable Compose plugin (runner only)
-        run: |
-          echo "=== Before patch: build.gradle ==="
-          cat build.gradle
-          echo "=== Before patch: app/build.gradle ==="
-          cat app/build.gradle
-          sed -i "/org.jetbrains.kotlin.plugin.compose/d" build.gradle
-          sed -i "/org.jetbrains.kotlin.plugin.compose/d" app/build.gradle
-          echo "=== After patch: build.gradle ==="
-          cat build.gradle
-          echo "=== After patch: app/build.gradle ==="
-          cat app/build.gradle
-
       - name: Build Debug APK
         run: gradle assembleDebug
 
