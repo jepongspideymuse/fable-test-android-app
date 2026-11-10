@@ -33,6 +33,4 @@ GitHub Actions workflow **Build Debug APK** (`.github/workflows/build.yml`):
 
 ## Known issue
 
-The committed `build.gradle` and `app/build.gradle` still reference the Gradle plugin `org.jetbrains.kotlin.plugin.compose` at version `1.9.24`, which was never published for Kotlin 1.9.x (the plugin was only published from 2.0.0). A plain local build will therefore fail at plugin resolution.
-
-The CI workflow works around this by removing those plugin lines in the runner's checkout before building. Compose is provided by the Kotlin Android plugin with `kotlinCompilerExtensionVersion 1.5.14`.
+The Compose plugin issue is FIXED in the repo. The unused plugin declaration `org.jetbrains.kotlin.plugin.compose` was removed from `build.gradle` (root) and `app/build.gradle`. Compose is configured via `composeOptions` with `kotlinCompilerExtensionVersion '1.5.14'` alongside Kotlin 1.9.24.
